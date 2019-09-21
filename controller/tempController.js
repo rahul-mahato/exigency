@@ -8,18 +8,18 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.send("temp = " + req.body.temp);
-    // var temp = new tempModel({
-    //     temp: req.body.temp
-    // });
 
-    // temp.save((err, docs) => {
-    //     if (!err) {
-    //         res.send(req.body.temp);
-    //     } else {
-    //         res.send("ERROR IN SAVING TEMP");
-    //     }
-    // });
+    var temperature = new tempModel({
+        temp: req.body.temp
+    });
+
+    temperature.save((err, docs) => {
+        if (!err) {
+            res.send("successfull");
+        } else {
+            res.send("ERROR IN SAVING TEMP");
+        }
+    });
 });
 
 
