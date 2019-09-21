@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
+    console.log("DATA RECIEVED TEMP : " + req.body.temp);
     var temperature = new tempModel({
         temp: req.body.temp
     });
