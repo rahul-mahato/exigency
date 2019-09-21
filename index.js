@@ -1,5 +1,5 @@
 require('./db');
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT;
 const express = require('express');
 const bodyParser = require('body-parser');
 
