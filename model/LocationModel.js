@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const LocationModel = new mongoose.model('Temp', {
+const LocationModel = new mongoose.model('location', {
     latitude: {
         type: String
     },
