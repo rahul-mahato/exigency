@@ -17,9 +17,11 @@ router.get('/allLocations', (req, res) => {
 
 
 
-router.post('/', async(req, res) => {
-    var phone_number, name;
+router.post('/', (req, res) => {
+    var phone_number, name, place_id;
 
+    name = JSON.parse(req.body);
+    console.log(JSON.stringify(name));
     var location = new LocationModel({
         latitude: req.body.latitude,
         longitude: req.body.longitude
@@ -30,29 +32,33 @@ router.post('/', async(req, res) => {
             res.send(JSON.stringify(err, undefined, 0));
         }
     })
+    res.send("DATA POSTED SUCCESSFULLY");
 
-    latitude = req.body.latitude;
-    longitude = req.body.longitude;
-    // 85.82736819029014    20.338958274723307
-
-
-    //searching for hospitals nearby
-    var hospitals = request('GET', `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=10000&type=hospitals&keyword=hospital&key=AIzaSyCMSaVefKTK1g01PuzUe9SO3ROleovzxvQ`);
-    var data = JSON.parse(hospitals.getBody());
-    var place_id = data.results[0].place_id;
-    console.log("place_id = " + place_id);
+    // latitude = req.body.latitude;
+    // longitude = req.body.longitude;
+    // // 85.82736819029014    20.338958274723307
 
 
-    //searching for the details of the first hospitals
-    var Details = request('GET', `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,rating,formatted_phone_number&key=AIzaSyCMSaVefKTK1g01PuzUe9SO3ROleovzxvQ`);
-    var det = JSON.parse(Details.getBody());
-    console.log(det);
+    // //searching for hospitals nearby
+    // var hospitals = request('GET', `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=10000&type=hospitals&keyword=hospital&key=AIzaSyDnubpZw4RF0OhGG-SqUI-3NtcC_4D8Kwc`);
+    // var data = JSON.parse(hospitals.getBody());
+    // console.log(data);
+    // place_id = data.results[0].place_id;
+    // console.log("place_id = " + place_id);
 
-    name = det.result.name;
-    phone_number = det.result.formatted_phone_number;
 
-    console.log("NAME = " + name);
-    console.log("Phone = " + phone_number);
+    // var Details = request('GET', `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,rating,formatted_phone_number&key=AIzaSyDnubpZw4RF0OhGG-SqUI-3NtcC_4D8Kwc`);
+    // var det = JSON.parse(Details.getBody());
+    // console.log(det);
+
+    // name = det.result.name;
+    // phone_number = det.result.formatted_phone_number;
+
+    // console.log("NAME = " + name);
+    // console.log("Phone = " + phone_number);
+    // res.send("NAME = " + name + "Phone = " + phone_number);
+
+
 
 });
 
