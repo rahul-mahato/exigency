@@ -20,8 +20,8 @@ router.get('/allLocations', (req, res) => {
 router.post('/', (req, res) => {
     var phone_number, name, place_id;
 
-    name = JSON.parse(req.body);
-    console.log(JSON.stringify(name));
+
+
     var location = new LocationModel({
         latitude: req.body.latitude,
         longitude: req.body.longitude
