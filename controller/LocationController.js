@@ -5,7 +5,7 @@ const router = express.Router();
 const GoogleMapsAPI = require('googlemaps');
 const request = require('sync-request');
 
-router.get('/allLocations', (req, res) => {
+router.get('/', (req, res) => {
     LocationModel.find((err, docs) => {
         if (!err) {
             res.send(docs);
