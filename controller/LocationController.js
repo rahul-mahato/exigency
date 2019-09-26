@@ -19,19 +19,20 @@ router.get('/allLocations', (req, res) => {
 
 router.post('/', (req, res) => {
     var phone_number, name, place_id;
+    console.log(req.body.latitude);
+    console.log(req.body.longitude);
 
 
+    // var location = new LocationModel({
+    //     latitude: req.body.latitude,
+    //     longitude: req.body.longitude
+    // });
 
-    var location = new LocationModel({
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
-    });
-
-    location.save((err, docs) => {
-        if (err) {
-            res.send(JSON.stringify(err, undefined, 0));
-        }
-    })
+    // location.save((err, docs) => {
+    //     if (err) {
+    //         res.send(JSON.stringify(err, undefined, 0));
+    //     }
+    // })
     res.send("DATA POSTED SUCCESSFULLY");
 
     // latitude = req.body.latitude;
