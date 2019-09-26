@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
     console.log(req.body.longitude);
 
 
+
     // var location = new LocationModel({
     //     latitude: req.body.latitude,
     //     longitude: req.body.longitude
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
     //         res.send(JSON.stringify(err, undefined, 0));
     //     }
     // })
-    res.send("DATA POSTED SUCCESSFULLY");
+    res.send("DATA POSTED SUCCESSFULLY : " + req.body.latitude + " , " + req.body.longitude);
 
     // latitude = req.body.latitude;
     // longitude = req.body.longitude;
